@@ -64,6 +64,6 @@ pgClient.on("connect",(client) => {
         res.send({ working: true });
     });
 
-    app.listen(5000, err => {
+    app.listen(5000, (err) => {
         console.log('Listening');
     });
