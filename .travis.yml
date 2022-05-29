@@ -4,20 +4,20 @@ node_js:
 #sudo: required
 
 before_install:
-  - docker build -t Alldayallan/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t allanman408/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true Alldayallan/react-test npm test
+  - docker run -e CI=true allanman408/react-test npm test
 
 after_success:
-  - docker build -t Alldayallan/multi-client ./client
-  - docker build -t Alldayallan/multi-nginx ./nginx
-  - docker build -t Alldayallan/multi-server ./server
-  - docker build -t Alldayallan/multi-worker ./worker
+  - docker build -t allanman408/multi-client ./client
+  - docker build -t allanman408/multi-nginx ./nginx
+  - docker build -t allanman408/multi-server ./server
+  - docker build -t allanman408/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to docker hub
-  - docker push Alldayallan/multi-client
-  - docker push Alldayallan/multi-nginx 
-  - docker push Alldayallan/multi-server
-  - docker push Alldayallan/multi-worker
+  - docker push allanman408/multi-client
+  - docker push allanman408/multi-nginx 
+  - docker push allanman408/multi-server
+  - docker push allanman408/multi-worker
